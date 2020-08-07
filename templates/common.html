@@ -1,0 +1,51 @@
+<head>
+<!--  (JS FILE)  Load jQuery.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--  (CSS FILE)  Load Bootstrap CSS Only, no Bootstrap.js in this example-->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<!--HTML (Bootstrap Classes used)-->
+<body>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <form id="theform" action="{% url "search" %}" method="post">{% csrf_token %}
+                    <h1>Search</h1>
+                    <div class="input-group input-group-sm">
+                        <input class="form-control" type="text"  placeholder="Type here..."  name="s1" >
+                        <div class="input-group-btn"><button type="submit" class="btn btn-block btn-primary">Submit</button></div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-9">
+                <h1>Welcome To IMDB</h1>
+                <table id="data" class="table table-striped table-bordered">
+                    <tr>
+                        <th>Poster</th>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>IMDB ID</th>
+                        <th>Type</th>
+                    </tr>
+                    {% block mahaboob %}
+                    {% endblock %}
+
+                </table>
+                <h1>Raw Data (JSON string)</h1>
+                <div id="rawdata"></div>
+           </div>
+        </div>
+    </div>
+</div>
+</body>
+<style>
+/*    Images only inside the #data table*/
+/*   default */
+    #data img{max-height:100px;transition:0.2s}
+/*    on hover*/
+    #data img:hover{max-height:500px;border-radius:10px}
+/*   table row, every second one only with a solid white (#FFF) background */
+    table tr:nth-child(2n){background:#fff}
+</style>
