@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",views.shaowindex,name="main"),
     path("search",views.search,name="search"),
+    path("view_movie_info",views.view_movie_info,name="view_movie_info")
 #
 ]

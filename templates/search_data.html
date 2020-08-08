@@ -1,14 +1,16 @@
 {% extends "common.html" %}
-<h1>ashdfjha</h1>
+
 {% block mahaboob %}
+    {% for data in movies %}
     <tr>
 
-        <th><img src="{{ poster }}"></th>
-
-        <th>{{ title }}</th>
-        <th>{{ year }}</th>
-        <th>{{ imdb }}</th>
-
+        <th><img src="{{ data.poster }}"></th>
+        <th><a href="{% url 'view_movie_info' %}?no={{ data.imdb }}">{{ data.title }}</a></th>
+        <th>{{ data.year }}</th>
+        <th>{{ data.imdb }}</th>
+        <th>{{ data.type }}</th>
+    }
 
     </tr>
+    {% endfor %}
 {% endblock %}
